@@ -119,7 +119,7 @@ print('=' * 40)
 print('EYESENTINEL - SECURITY LOG')
 print('=' * 40)
 
-print("\n[• RESUMO DE AUTENTICAÇÃO •]")
+print("\n[• RESUMO DE AUTENTICAÇÃO - SEVERIDADE: INFORMAÇÃO •]")
 
 print("IPs com falhas de login: ")
 for ip, quantidade in falhas_por_ip.items():
@@ -138,7 +138,7 @@ for user, quantidade in sucessos_por_user.items():
     print('-', user, ':', quantidade)
 
 
-print("\n[• POSSÍVEIS TENTATIVAS DE FORÇA BRUTA •]")
+print("\n[• POSSÍVEIS TENTATIVAS DE FORÇA BRUTA - SEVERIDADE: SUSPEITA •]")
 if len(possivel_fb_ip) == 0 and len(possivel_fb_usuario) == 0:
     print('Nenhuma tentativa suspeita identificada.')
 else:
@@ -147,7 +147,7 @@ else:
     for user in possivel_fb_usuario:
         print('ATENÇÃO: USUÁRIO SUSPEITO: ', user, "-", falhas_por_user[user], "falhas")
 
-print("\n[• COMPORTAMENTO PARA INVESTIGAÇÃO •]")
+print("\n[• COMPORTAMENTO PARA INVESTIGAÇÃO - SEVERIDADE: INVESTIGAÇÃO •]")
 print('Usuários associados a múltiplos IPs: ')
 for user in usuarios_multiplos_ips:
     print("-", user, ":", ips_por_usuario[user])
@@ -156,14 +156,14 @@ print('IPs associados a múltiplos usuários:')
 for ip in ips_multiplos_usuarios:
     print('-', ip, ":", usuarios_por_ip[ip])
 
-print('\n[• REGISTROS INCOMPLETOS •]')
+print('\n[• REGISTROS INCOMPLETOS - SEVERIDADE: INCOMPLETO •]')
 if len(registros_incompletos) == 0:
     print("Nenhum registro incompleto encontrado.")
 else:
     for registro in registros_incompletos:
         print('-', registro)
 
-print("\n[• EVENTOS DESCONHECIDOS •]")
+print("\n[• EVENTOS DESCONHECIDOS - SEVERIDADE: DESCONHECIDO •]")
 print(eventos_desconhecidos)
 
 print("\n" + "=" * 40)
